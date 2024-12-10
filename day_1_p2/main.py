@@ -1,10 +1,11 @@
 from collections import defaultdict
 
+
 def main():
     similarity_score = 0
     left, right = [], defaultdict(lambda: 0)
     with open("input.txt", "r") as input:
-        while line:= input.readline():
+        while line := input.readline():
             split = line.split()
             left.append(int(split[0]))
 
@@ -12,7 +13,7 @@ def main():
             right[int(split[1])] += 1
     for elem in left:
         similarity_score += elem * right[elem]
-    
+
     return similarity_score
 
 

@@ -5,7 +5,9 @@ def is_correct(update, rules):
     for i, x in enumerate(update):
         for j, y in enumerate(update):
             if i < j and y in rules[x]:
-                print(f"{update} not correct: {update[i]} - {update[j]} are in wrong order")
+                print(
+                    f"{update} not correct: {update[i]} - {update[j]} are in wrong order"
+                )
                 return False
     return True
 
@@ -22,7 +24,7 @@ def main():
             elif len(line.strip()):
                 split = line.strip().split(",")
                 updates.append(list(map(int, split)))
-    
+
     sum = 0
     for update in updates:
         if is_correct(update, rules):
