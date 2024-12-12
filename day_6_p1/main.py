@@ -26,7 +26,7 @@ guard_position = (0, 0)
 def find_guard_position():
     for i, row in enumerate(input_map):
         for j, char in enumerate(row):
-            if char == '^':
+            if char == "^":
                 return (i, j)  # Found the position
 
 
@@ -40,28 +40,28 @@ def is_walkable(pos: tuple[int, int]):
 
 def visit_pos(pos: tuple[int, int]):
     global visit_count
-    if(input_map[pos[0]][pos[1]]) == ".":
+    if (input_map[pos[0]][pos[1]]) == ".":
         input_map[pos[0]][pos[1]] = "X"
         visit_count += 1
 
 
 def theorical_next_position(pos: tuple[int, int], facing):
     dir = dir_map[facing_dir_map[facing]]
-    return (pos[0]+dir[0], pos[1]+dir[1])
+    return (pos[0] + dir[0], pos[1] + dir[1])
 
 
 def print_map():
     for line in input_map:
         print("".join(line))
     print()
-        
+
 
 def main():
     global guard_position, bounds, visit_count, input_map
     with open("input.txt", "r") as input:
         while line := input.readline():
             input_map.append(list(line.strip()))
-        
+
     bounds = (len(input_map), len(input_map[0]))
     guard_position = find_guard_position()
     input_map[guard_position[0]][guard_position[1]] = "."
@@ -72,12 +72,12 @@ def main():
         theorical_next_pos = theorical_next_position(curr_position, curr_facing)
         if not is_inside_map(theorical_next_pos):
             break
-        if is_walkable(theorical_next_pos):  # If the position is not a barrier 
+        if is_walkable(theorical_next_pos):  # If the position is not a barrier
             curr_position = theorical_next_pos
         else:
-            #print_map()  # Can also show the map every time we hit a barrier
+            # print_map()  # Can also show the map every time we hit a barrier
             curr_facing = rotation_map[curr_facing]
-            #print(f"Now going {facing_dir_map[curr_facing]}..")
+            # print(f"Now going {facing_dir_map[curr_facing]}..")
 
     return visit_count
 
