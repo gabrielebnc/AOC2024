@@ -94,7 +94,7 @@ def main():
     global bounds, cells_count
 
     input_map = []
-    with open("day_6_p2/input.txt", "r") as input:
+    with open("input.txt", "r") as input:
         while line := input.readline():
             input_map.append(list(line.strip()))
 
