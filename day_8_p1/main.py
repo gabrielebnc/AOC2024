@@ -17,7 +17,7 @@ def get_antinodes_positions(pos1: tuple[int, int], pos2: tuple[int, int], bounds
     an_positions = []
     delta_pos = (pos1[0] - pos2[0], pos1[1] - pos2[1])
 
-    #Compute all the possible antinodes positions, two of these will be the antennas positions themself, we will filter them out
+    # Compute all the possible antinodes positions, two of these will be the antennas positions themself, we will filter them out
     an_positions.append(add_positions(pos1, delta_pos))
     an_positions.append(add_positions(pos2, delta_pos))
     an_positions.append(subtract_positions(pos1, delta_pos))
@@ -48,7 +48,9 @@ def main():
                 for x2, line2 in enumerate(input_map):
                     for y2, elem2 in enumerate(line2):
                         if elem1 == elem2:  # We found two antennas of same frequency
-                            antinodes = get_antinodes_positions((x1, y1), (x2, y2), bounds)
+                            antinodes = get_antinodes_positions(
+                                (x1, y1), (x2, y2), bounds
+                            )
                             for an in antinodes:
                                 antinode_positions.add(an)
 
