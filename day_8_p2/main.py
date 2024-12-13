@@ -57,7 +57,6 @@ def main():
                             x2,
                             y2,
                         ) and elem1 == elem2:  # We found two antennas of same frequency
-                            print(f"({x1},{y1})  ({x2},{y2})")
                             antinodes = get_antinodes_positions(
                                 (x1, y1),
                                 (x2, y2),
